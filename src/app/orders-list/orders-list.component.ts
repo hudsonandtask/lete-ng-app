@@ -16,7 +16,12 @@ export class OrdersListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.orders = this.orderService.getOrders();
+    // subscribe is a HO func. 
+    // takes an input as functions 
+    // maps this internal prop to the data returned by the HO. 
+    // 
+
+    this.orderService.getOrders().subscribe(data => this.orders = data);
   }
 
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersServiceService {
 
-  constructor() { }
+  constructor(private http:HttpClient) {}
 
   orders = [
     {
@@ -73,8 +74,14 @@ export class OrdersServiceService {
       }
   ];
   
-  getOrders(){
+  orderUrl = "https://leye.azurewebsites.net/api/leteAzureAPI";
+
+  getMockOrders(){
     return this.orders;
+  }
+
+  getOrders(){
+    return this.http.get(this.orderUrl);
   }
 
   updateOrders(){
