@@ -21,7 +21,10 @@ export class OrdersListComponent implements OnInit {
     // maps this internal prop to the data returned by the HO. 
     // 
 
-    this.orderService.getOrders().subscribe(data => this.orders = data);
+    this.orderService.getOrders().subscribe(
+      data => this.orders = data, 
+      error => console.log(error)
+      );
   }
 
 }
